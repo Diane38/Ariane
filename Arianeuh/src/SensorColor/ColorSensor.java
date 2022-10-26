@@ -43,6 +43,15 @@ public class ColorSensor {
 		//		System.out.println(this.toString(this.tabRed));
 		//		Delay.msDelay(40000);
 	}
+	
+	
+	public static String getlatestPased() {
+		return latestPassed;
+	}
+	
+	public static String getOldestPased() {
+		return oldestPassed;
+	}
 
 	public void initializeTab() throws IOException {
 		FileReader vMoy= new FileReader("calibrate.properties");
