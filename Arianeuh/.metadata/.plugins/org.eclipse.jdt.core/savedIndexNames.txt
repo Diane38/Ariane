@@ -1,7 +1,6 @@
 INDEX VERSION 1.131+C:\Users\andre\Documents\MIASHS\S5\Arianne\Ariane\Arianeuh\.metadata\.plugins\org.eclipse.jdt.core
 3068202425.index
 612511169.index
-4153605307.index
 1273198226.index
 3855420317.index
 75572574.index
