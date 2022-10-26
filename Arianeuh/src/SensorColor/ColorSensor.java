@@ -26,6 +26,9 @@ public class ColorSensor {
 	private float[] tabGreen;
 	private float[] tabYellow;
 	private float[] tabGray;
+	
+	private String latestPassed; // Couleur de la dèrgnière ligne franchie.
+	private String oldestPassed; // Couleur de l'avent dèrngnière ligne franchit.
 
 	public ColorSensor(Port port) throws IOException {
 		this.colorSensor = new EV3ColorSensor(port);
