@@ -2,4 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="lejos.remote.ev3.RemoteRequestException"/>
     <fullyQualifiedTypeName name="lejos.ev3.tools.EV3Console"/>
+    <fullyQualifiedTypeName name="lejos.hardware.motor.BasicMotor"/>
+    <fullyQualifiedTypeName name="lejos.hardware.sensor.EV3UltrasonicSensor"/>
 </qualifiedTypeNameHistroy>

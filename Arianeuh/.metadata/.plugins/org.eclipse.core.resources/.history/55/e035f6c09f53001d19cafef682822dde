@@ -1,0 +1,69 @@
+
+import lejos.hardware.motor.EV3LargeRegulatedMotor;
+import lejos.hardware.port.MotorPort;
+import lejos.robotics.RegulatedMotor;
+import lejos.robotics.chassis.Chassis;
+import lejos.robotics.chassis.WheeledChassis;
+import lejos.robotics.chassis.Wheel;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
+
+public class Strategie {
+
+	
+	
+	public static double[][] scan(Motors k, UltraSonicSensor eye) {
+        int nbMesure = 0; // nombre de mesures effectuée
+        int memoire=0; // correspondra a l'indice qu'il faut aller rechercher pour eviter les parcours inutiles
+        float distanceMin=231; // distance max permettant de retrouver la distance la plus faible
+        float[] distances = new float[1500]; // tableau des mesures de distance
+        double[] angles = new double[1500]; // tableau des différent angles de rotation (boussole)
+        k.rotate(360); // debut du scan
+        while (k.isMoving()){
+            angles[nbMesure]=k.getMovement().getAngleTurned();
+            distances[nbMesure]=eye.doMeasure();
+            if (eye.doMeasure()<distanceMin) {
+                distanceMin=eye.doMeasure();
+                memoire=nbMesure;
+            }
+            nbMesure++;
+        }
+        if (angles[memoire]>180)
+            //            return angles[memoire]-360;
+            return new double[] {distances, angles};
+        //        return angles[memoire]; // retourne l'angle a avoir pour s'orienter vers l'objet le plus proche
+        return new double[] {angles[memoire], distances[memoire]};
+    }
+	
+	
+	
+	public static double[] leplusProche(Motors k, UltraSonicSensor eye) {
+        int nbMesure = 0; // nombre de mesures effectuée
+        int memoire=0; // correspondra a l'indice qu'il faut aller rechercher pour eviter les parcours inutiles
+        float distanceMin=231; // distance max permettant de retrouver la distance la plus faible
+        float[] distances = new float[1500]; // tableau des mesures de distance
+        double[] angles = new double[1500]; // tableau des différent angles de rotation (boussole)
+        k.rotate(360); // debut du scan
+        while (k.isMoving()){
+            angles[nbMesure]=k.getMovement().getAngleTurned();
+            distances[nbMesure]=eye.doMeasure();
+            if (eye.doMeasure()<distanceMin) {
+                distanceMin=eye.doMeasure();
+                memoire=nbMesure;
+            }
+            nbMesure++;
+        }
+        if (angles[memoire]>180)
+            //            return angles[memoire]-360;
+            return new double[] {angles[memoire]-360, distances[memoire]};
+        //        return angles[memoire]; // retourne l'angle a avoir pour s'orienter vers l'objet le plus proche
+        return new double[] {angles[memoire], distances[memoire]};
+    }
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
